@@ -22,8 +22,8 @@ cp ./sample/local.conf
 vi local.conf
 ```
 
-Contents of the local.conf need to be added:
-[[local|localrc]]
+Contents of the local.conf need to be added:   
+[[local|localrc]]   
 ADMIN_PASSWORD=agtech123   
 DATABASE_PASSWORD=$ADMIN_PASSWORD   
 RABBIT_PASSWORD=$ADMIN_PASSWORD   
