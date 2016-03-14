@@ -21,18 +21,19 @@ cd devstack
 cp ./sample/local.conf
 vi local.conf
 ```
+
 Contents of the local.conf need to be added:
 [[local|localrc]]
-ADMIN_PASSWORD=agtech123
-DATABASE_PASSWORD=$ADMIN_PASSWORD
-RABBIT_PASSWORD=$ADMIN_PASSWORD
-SERVICE_PASSWORD=$ADMIN_PASSWORD
-
-HOST_IP=192.169.23.41 #Modify this according to your local env
-FLAT_INTERFACE=eth0 #Modify this according to your local env
-FIXED_RANGE=172.100.100.0/24 #Modify this according to your local env
-FLOATING_RANGE=192.169.100.0/24 #Modify this according to your local env
+ADMIN_PASSWORD=agtech123   
+DATABASE_PASSWORD=$ADMIN_PASSWORD   
+RABBIT_PASSWORD=$ADMIN_PASSWORD   
+SERVICE_PASSWORD=$ADMIN_PASSWORD   
+HOST_IP=192.169.23.41 #Modify this according to your local env   
+FLAT_INTERFACE=eth0 #Modify this according to your local env   
+FIXED_RANGE=172.100.100.0/24 #Modify this according to your local env   
+FLOATING_RANGE=192.169.100.0/24 #Modify this according to your local env   
 MULTI_HOST=1
+
 ```
 ./stack.sh
 ```
