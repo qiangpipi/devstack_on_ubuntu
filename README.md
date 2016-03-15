@@ -39,3 +39,7 @@ MULTI_HOST=1 #If you have multiple computing node set this to 1. Otherwise 0.
 ```
 ./stack.sh
 ```
+
+Notes:
+Don't forget to add access strategy for the vm. Otherwise the vms can't be pinged and sshed.   
+How to pull up all the services without re-stack everything after host node rebooted?   
