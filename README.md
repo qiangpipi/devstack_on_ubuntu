@@ -32,7 +32,9 @@ HOST_IP=192.169.23.41 #Modify this according to your local env
 FLAT_INTERFACE=eth0 #Modify this according to your local env   
 FIXED_RANGE=172.100.100.0/24 #Modify this according to your local env   
 FLOATING_RANGE=192.169.100.0/24 #Modify this according to your local env   
-MULTI_HOST=1
+PUBLIC_NETWORK_GATEWAY=192.169.0.254   
+
+MULTI_HOST=1 #If you have multiple computing node set this to 1. Otherwise 0.   
 
 ```
 ./stack.sh
