@@ -41,10 +41,17 @@ MULTI_HOST=1 #If you have multiple computing node set this to 1. Otherwise 0.
 ```
 Volume create related as below. After rejoin-stack.sh, the vg will be created by cinder-volume automatically.
 ```
-dd if=/dev/zero of=/opt/stack/data/stack-volumes-default-backing-file bs=1M seek=10250 count=0
-dd if=/dev/zero of=/opt/stack/data/stack-volumes-lvmdriver-1-backing-file bs=1M seek=10250 count=0
-sudo losetup /dev/loop1 /opt/stack/data/stack-volumes-default-backing-file
-sudo losetup /dev/loop2 /opt/stack/data/stack-volumes-lvmdriver-1-backing-file
+dd if=/dev/zero of=/opt/stack/data/stack-volumes-default-backing-file bs=1M seek=50000 count=0
+dd if=/dev/zero of=/opt/stack/data/stack-volumes-lvmdriver-1-backing-file bs=1M seek=50000 count=0
+sudo losetup /dev/loop0 /opt/stack/data/stack-volumes-default-backing-file
+sudo losetup /dev/loop1 /opt/stack/data/stack-volumes-lvmdriver-1-backing-file
+##Still neet to create vg here
+##sudo vgcreate stack-volumes-default /dev/loop0
+##sudo vgcreate stack-volumes-lvmdriver-1 /dev/loop1
+sudo echo "dd if=/dev/zero of=/opt/stack/data/stack-volumes-default-backing-file bs=1M seek=50000 count=0" >> /etc/init.d/cinder-setup-backing-file
+sudo echo "dd if=/dev/zero of=/opt/stack/data/stack-volumes-lvmdriver-1-backing-file bs=1M seek=50000 count=0" >> /etc/init.d/cinder-setup-backing-file
+sudo echo "chown stack:stack /opt/stack/data/stack-volumes-default-backing-file"
+sudo echo "chown stack:stack /opt/stack/data/stack-volumes-lvmdriver-1-backing-file"
 sudo echo "losetup /dev/loop1 /opt/stack/data/stack-volumes-default-backing-file" >> /etc/init.d/cinder-setup-backing-file
 sudo echo "losetup /dev/loop2 /opt/stack/data/stack-volumes-lvmdriver-1-backing-file" >> /etc/init.d/cinder-setup-backing-file
 sudo echo "exit 0" >> /etc/init.d/cinder-setup-backing-file
