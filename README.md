@@ -60,4 +60,6 @@ sudo ln -s /etc/init.d/cinder-setup-backing-file /etc/rc2.d/S10cinder-setup-back
 Notes:
 Don't forget to add access strategy for the vm. Otherwise the vms can't be pinged and sshed.   
 To restart the tgt service if error occurs in cinder-volume.   
+To manually start keystone by keystone-all &   
+G-api and g-reg may have some errors in the screens but... please check if the g-api and g-reg process are running since g-api and g-reg seem not shutdowned by unstack.   
 How to pull up all the services without re-stack everything after host node rebooted?   
