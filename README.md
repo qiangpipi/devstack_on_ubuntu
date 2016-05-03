@@ -22,7 +22,7 @@ cp ./sample/local.conf
 vi local.conf
 ```
 
-Contents of the local.conf need to be added:   
+Contents of the local.conf need to be added in control node:   
 [[local|localrc]]   
 ADMIN_PASSWORD=agtech123   
 DATABASE_PASSWORD=$ADMIN_PASSWORD   
@@ -35,6 +35,34 @@ FLOATING_RANGE=192.169.100.0/24 #Modify this according to your local env
 PUBLIC_NETWORK_GATEWAY=192.169.0.254   
 
 MULTI_HOST=1 #If you have multiple computing node set this to 1. Otherwise 0.   
+
+Contents of the local.conf need to be added in computing node:  
+[[local|localrc]]
+ADMIN_PASSWORD=agtech123   
+DATABASE_PASSWORD=$ADMIN_PASSWORD   
+RABBIT_PASSWORD=$ADMIN_PASSWORD   
+SERVICE_PASSWORD=$ADMIN_PASSWORD   
+
+HOST_IP=192.169.24.40 #Modify this according to your local env   
+
+FLAT_INTERFACE=bond0 #Modify this according to your local env   
+FIXED_RANGE=172.100.100.0/24 #Modify this according to your local env   
+
+FLOATING_RANGE=192.169.200.0/24 #Modify this according to your local env   
+PUBLIC_NETWORK_GATEWAY=192.169.0.254   
+
+MULTI_HOST=1   
+
+DATABASE_TYPE=mysql   
+SERVICE_HOST=192.169.23.40   
+MYSQL_HOST=$SERVICE_HOST   
+RABBIT_HOST=$SERVICE_HOST   
+GLANCE_HOSTPORT=$SERVICE_HOST:9292   
+ENABLED_SERVICES=n-cpu,n-net,n-api-meta,c-vol   
+NOVA_VNC_ENABLED=True   
+NOVNCPROXY_URL="http://$SERVICE_HOST:6080/vnc_auto.html"   
+VNCSERVER_LISTEN=$HOST_IP   
+VNCSERVER_PROXYCLIENT_ADDRESS=$VNCSERVER_LISTEN   
 
 ```
 ./stack.sh
